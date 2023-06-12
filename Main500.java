@@ -15,18 +15,20 @@ public class Main500
 
 			// stuff
 			int type = rand.nextInt(23)+1;
+			int vanilla = rand.nextInt();
 			int attribute = rand.nextInt(7)+1;
-			int summon = rand.nextInt(11)+1;
+			int summon = rand.nextInt(9)+1;
+			int precedent = rand.nextInt();
 			int power = rand.nextInt(3)+1;
-			int range = rand.nextInt(5)+1;
+			//	int range = rand.nextInt(5)+1;
 			int speed = rand.nextInt(4)+1;
-			int backrow = rand.nextInt(3)+1;
-			int card_count = rand.nextInt(10)+10;
+			int backrow = rand.nextInt(4)+1;
 			int pendulum = rand.nextInt();
-			int run = value +1;
-			int theme = rand.nextInt(41)+1;
+			//int card_count = rand.nextInt(10)+10;
+			//int run = value +1;
+			int theme = rand.nextInt(43);
 
-			System.out.println("Run #"+ run +" \n");
+			//System.out.println("Run #"+ run +" \n");
 
 			// printing the type
 			switch (type)
@@ -120,24 +122,131 @@ public class Main500
 			break;
 			case 9: System.out.println("Link Summon");
 			break;
-			case 10: System.out.println("Multiple summon methods");
-			break;
-			case 11: System.out.println("No particular method");
+			case 10: System.out.println("No particular method");
 			break;
 			}
 
+			// how many vanillas will be in here?
+			if(vanilla%3 == 1)
+			{
+				System.out.println("1 Vanilla monster");
+			}
+			else if (vanilla%3 == 2)
+			{
+				System.out.println("Multiple Vanillas");
+			}
+			else
+			{
+				System.out.println("No Vanilla monsters");
+			}
+
+			// determines how to go about Tribute Summons
+			if(summon == 2)
+			{
+				if(precedent%3 == 1)
+				{
+					System.out.println("Tribute monsters from hand and/or banish from GY instead");
+				}
+				else if(precedent%3 == 2)
+				{
+					System.out.println("Pay LP to Tribute Summon");
+				}
+				else
+				{
+					System.out.println("Normal procedure");
+				}
+			}
+
+			// determines how to go about Ritual Summons
+			if(summon == 4)
+			{
+				if(precedent%3 == 1)
+				{
+					System.out.println("Use LP in lieu of Tributing monsters");
+				}
+				else if(precedent%3 == 2)
+				{
+					System.out.println("Use monster's ATK instead of Levels");
+				}
+				else
+				{
+					System.out.println("Normal procedure");
+				}
+			}
+
+			// determines how to go about Fusion Summons
+			if(summon == 5)
+			{
+				if(precedent%3 == 1)
+				{
+					System.out.println("Fusion Summon from the Deck [or Extra]");
+				}
+				if(precedent%3 == 2)
+				{
+					System.out.println("Contact Fusion");
+				}
+				else
+				{
+					System.out.println("Normal procedure");
+				}
+			}
+
+			// determines how to go about Synchro Summons
+			if(summon == 6)
+			{
+				if(precedent%2 == 1)
+				{
+					System.out.println("Use difference in Levels (Dark Synchro?)");
+				}
+				else
+				{
+					System.out.println("Normal procedure");
+				}
+			}
+
+			// determines how to go about Xyz Summons
+			if(summon == 7)
+			{
+				if(precedent%3 == 1)
+				{
+					System.out.println("Dependent Ranks on materials");
+				}
+				else if(precedent%3 == 2)
+				{
+					System.out.println("Use materials from elsewhere but field");
+				}
+				else
+				{
+					System.out.println("Normal procedure");
+				}
+			}
+
+			// determine if we get ED Pendulums or not (these will follow the usual procedures)
 			if(summon == 8)
 			{
 				if(pendulum%2 == 0)
 				{
-				System.out.println("ED Pendulums"); 
+					System.out.println("ED Pendulums"); 
 				}
 				else if(pendulum%2 != 0)
 				{
-				System.out.println("No ED Pendulums");
+					System.out.println("No ED Pendulums");
 				}
 			}
-			
+
+			// determine how to deal with Link Summon
+			if(summon == 9)
+			{
+				if(precedent%2 == 1)
+				{
+					System.out.println("Link Materials from elsewhere but hand/field"); 
+				}
+				else
+				{
+					System.out.println("Normal procedure");
+				}
+			}
+
 			// print power range
 
 			switch(power)
@@ -149,21 +258,6 @@ public class Main500
 			case 3: System.out.println("High Level/Rank/Link Rating");
 			break;
 			case 4: System.out.println("No specific Level/Ranking/Link range");
-			break;
-			}
-
-			// print stat range
-			switch (range)
-			{
-			case 1: System.out.println("Low stats");
-			break;
-			case 2: System.out.println("Average stats");
-			break;
-			case 3: System.out.println("High stats");
-			break;
-			case 4: System.out.println("Super high stats");
-			break;
-			case 5: System.out.println("Mixed stat ranges");
 			break;
 			}
 
@@ -189,9 +283,11 @@ public class Main500
 			break;
 			case 2: System.out.println("Low backrow to monster ratio");
 			break;
-			case 3: System.out.println("High backrow/monster ratio");
+			case 3: System.out.println("Balanced backrow/monster ratio");
 			break;
-			case 4: System.out.println("Balanced backrow/monster ratio");
+			case 4: System.out.println("High backrow/monster ratio");
+			break;
+			case 5: System.out.println("Spells/Traps only");
 			break;
 			}
 
@@ -223,7 +319,7 @@ public class Main500
 			case 23: System.out.println("Destroy own cards to do things");break;
 			case 24: System.out.println("GY spam");break;
 			case 25: System.out.println("Hand traps");break;
-			case 26: System.out.println("Spell/Trap monsters");break;
+			case 26: System.out.println("Main Deck hate");break;
 			case 27: System.out.println("Specific targets");break;
 			case 28: System.out.println("Disruption tactics");break;
 			case 29: System.out.println("Inheritance effects [stuff gains effects if <x> is used to summon for them]");break;
@@ -238,16 +334,18 @@ public class Main500
 			case 38: System.out.println("Banish own cards to do things");break;
 			case 39: System.out.println("Hand control");break;
 			case 40: System.out.println("Multiple themes");break;
-			case 41: System.out.println("Specific value");break;
-			case 42: System.out.println("No particular theme");break;
+			case 41: System.out.println("Specific values");break;
+			case 42: System.out.println("Columns (specific placement)");break;
+			case 43: System.out.println("Revolves around Vanilla monsters");break;
+			default: System.out.println("No particular theme");break;
 			}
 
 			// how many cards in archetype/series, etc?
 
-			System.out.println("" + card_count + " " + "cards total\n");
+			System.out.println("\n");
 
 			//System.out.println("\n" + "" + +type + " " + +attribute + " " + +summon + " " + +range + " " + +range2 + " "+ +speed + " " + "\n");
-			System.out.println("\nEnjoy your cardmaking!\n");
+			//System.out.println("\nEnjoy your cardmaking!\n");
 		}
 	}
 }
